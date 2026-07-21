@@ -1,0 +1,40 @@
+{
+  "format_name": "약품명",
+  "format_size": "82mm",
+  "description": "ATDPS 봉지(82mm 약포지) 인쇄형식 '약품명'. 각 항목을 지정 좌표(xpos,ypos)에 지정 폰트/크기로 인쇄한다. content 가 #...#/<...>/$...$ 인 것은 실제 값으로 치환되는 placeholder 이다.",
+  "fixed_items": [
+    {"xpos": 0,   "ypos": 0,   "content": "#병실#",       "content_type": "P", "fontname": "HY견고딕", "font_size": 30, "bold": true},
+    {"xpos": 140, "ypos": 0,   "content": "#진료과#",     "content_type": "P", "fontname": "HY견고딕", "font_size": 30, "bold": true},
+    {"xpos": 350, "ypos": 0,   "content": "#성별#",       "content_type": "P", "fontname": "HY견고딕", "font_size": 30, "bold": true},
+    {"xpos": 390, "ypos": 0,   "content": "#나이#",       "content_type": "P", "fontname": "HY견고딕", "font_size": 30, "bold": true},
+    {"xpos": 0,   "ypos": 30,  "content": "$복용 일자$",  "content_type": "M", "fontname": "HY견고딕", "font_size": 20, "bold": true},
+    {"xpos": 0,   "ypos": 50,  "content": "#환자 번호#",  "content_type": "P", "fontname": "HY견고딕", "font_size": 20, "bold": true},
+    {"xpos": 0,   "ypos": 80,  "content": "#환자명#",     "content_type": "P", "fontname": "HY견고딕", "font_size": 50, "bold": true},
+    {"xpos": 0,   "ypos": 140, "content": "<복용 설명>",  "content_type": "M", "fontname": "HY견고딕", "font_size": 40, "bold": true}
+  ],
+  "drug_rows": {
+    "description": "약품 목록은 이 규칙으로 반복 인쇄한다. 약품 n번째(0부터)는 ypos = start_ypos + n*row_step 위치에, 약품 일반명은 name_xpos, 수량은 qty_xpos 에 인쇄.",
+    "start_ypos": 180,
+    "row_step": 20,
+    "name_xpos": 0,
+    "name_font_size": 20,
+    "qty_xpos": 280,
+    "qty_font_size": 23,
+    "fontname": "HY견고딕",
+    "bold": true,
+    "max_rows": 22
+  },
+  "placeholder_meaning": {
+    "note": "patient_content_state=true 는 환자정보성(헤더), false 는 약품/조제정보성. 아래는 이 서식에서 쓰는 주요 placeholder 만.",
+    "#병실#": {"patient_content_state": true,  "meaning": "병동/병실"},
+    "#진료과#": {"patient_content_state": true, "meaning": "진료과"},
+    "#성별#": {"patient_content_state": true,  "meaning": "성별"},
+    "#나이#": {"patient_content_state": true,  "meaning": "나이"},
+    "#환자 번호#": {"patient_content_state": true, "meaning": "환자번호"},
+    "#환자명#": {"patient_content_state": true,  "meaning": "환자명"},
+    "$복용 일자$": {"patient_content_state": false, "meaning": "복용(조제) 일자"},
+    "<복용 설명>": {"patient_content_state": false, "meaning": "복용 시점 안내문(예: 아침 식후 30분)"},
+    "<약품 일반명>": {"patient_content_state": false, "meaning": "약품명"},
+    "<약품 수량>": {"patient_content_state": false, "meaning": "해당 봉지 내 약품 수량"}
+  }
+}
